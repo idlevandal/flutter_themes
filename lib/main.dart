@@ -35,10 +35,10 @@ class TaskPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                    'Today',
-                  style: TextStyle(fontSize: 48.0),
+                  'Today',
+                  style: Theme.of(context).textTheme.headline3,
                 ),
-                Icon(Icons.add_circle_outline)
+                Icon(Icons.add_circle_outline),
               ],
             ),
           ),
@@ -49,14 +49,20 @@ class TaskPage extends StatelessWidget {
               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
               margin: EdgeInsets.symmetric(horizontal: 20.0),
               child: ListTile(
-                leading: Icon(Icons.call),
-                title: Text('Conference Call'),
-                subtitle: Text('Conference Call'),
-                trailing: Icon(Icons.check_circle),
+                leading: Icon(Icons.call, color: Theme.of(context).iconTheme.color),
+                title: Text('Conference Call', style: Theme.of(context).textTheme.bodyText1,),
+                subtitle: Text('30 mins', style: Theme.of(context).textTheme.bodyText2,),
+                trailing: Icon(Icons.check_circle, color: Theme.of(context).colorScheme.primary),
               ),
             ),
           )
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          print('Button pushed..');
+        },
+        child: Icon(Icons.add),
       ),
     );
   }
