@@ -11,10 +11,12 @@ class AppTheme {
   static const Color _lightSecondaryColor = Color(0XFFF4F4F4);
   static const Color _lightOnPrimaryColor = Colors.black;
 
-  static const Color _darkPrimaryColor = Colors.black;
+  static const Color _darkPrimaryColor = Colors.white24;
+  static const Color _darkPrimaryVariantColor = Colors.black;
   static const Color _darkSecondaryColor = Colors.white;
   static const Color _darkOnPrimaryColor = Colors.white;
 
+  // LIGHT THEME 💡
   static final ThemeData lightTheme = ThemeData(
     scaffoldBackgroundColor: _lightSecondaryColor,
     appBarTheme: AppBarTheme(
@@ -41,45 +43,47 @@ class AppTheme {
   static final TextTheme _lightTextTheme = TextTheme(
     headline2: _lightScreenHeadingTextStyle,
     bodyText1: _lightScreenTaskNameTextStyle,
-    bodyText2: _lightTaskDurationTextStyle, // listTile subtitle uses bodyText2
+    bodyText2: _lightScreenTaskDurationTextStyle, // listTile subtitle uses bodyText2
   );
 
   static final TextStyle _lightScreenHeadingTextStyle = TextStyle(fontSize: 48.0, color: _lightOnPrimaryColor);
   static final TextStyle _lightScreenTaskNameTextStyle = TextStyle(fontSize: 20.0, color: _lightOnPrimaryColor);
-  static final TextStyle _lightTaskDurationTextStyle = TextStyle(fontSize: 16.0, color: Colors.grey);
+  static final TextStyle _lightScreenTaskDurationTextStyle = TextStyle(fontSize: 16.0, color: Colors.grey);
 
-  // dark theme
+
+  // DARK THEME 🌚
   static final ThemeData darkTheme = ThemeData(
-      scaffoldBackgroundColor: _darkSecondaryColor,
+      scaffoldBackgroundColor: _darkPrimaryVariantColor,
       appBarTheme: AppBarTheme(
-          color: _darkPrimaryColor,
+          color: _darkPrimaryVariantColor,
           iconTheme: IconThemeData(
-              color: Colors.white
+              color: _darkOnPrimaryColor,
           )
       ),
       colorScheme: ColorScheme.dark(
-        primary: _darkPrimaryColor,
-        primaryVariant: _darkPrimaryColor,
+        primary: Colors.white24,
+        // primaryVariant: _darkPrimaryColor,
         secondary: _darkSecondaryColor,
         onPrimary: _darkOnPrimaryColor,
       ),
       iconTheme: IconThemeData(
-        color: _iconColor,
+        color: Colors.grey,
       ),
       textTheme: _darkTextTheme,
       floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: _darkPrimaryColor,
+        backgroundColor: _lightPrimaryColor,
       )
   );
 
   static final TextTheme _darkTextTheme = TextTheme(
     headline2: _darkScreenHeadingTextStyle,
     bodyText1: _darkScreenTaskNameTextStyle,
-    bodyText2: _darkTaskDurationTextStyle, // listTile subtitle uses bodyText2
+    bodyText2: _darkScreenTaskDurationTextStyle, // listTile subtitle uses bodyText2
   );
 
-  static final TextStyle _darkScreenHeadingTextStyle = TextStyle(fontSize: 48.0, color: _darkOnPrimaryColor);
-  static final TextStyle _darkScreenTaskNameTextStyle = TextStyle(fontSize: 20.0, color: _darkOnPrimaryColor);
-  static final TextStyle _darkTaskDurationTextStyle = TextStyle(fontSize: 16.0, color: Colors.grey);
+  // copyWith overrides the
+  static final TextStyle _darkScreenHeadingTextStyle = _lightScreenHeadingTextStyle.copyWith(color: _darkOnPrimaryColor);
+  static final TextStyle _darkScreenTaskNameTextStyle = _lightScreenTaskNameTextStyle.copyWith(color: _darkOnPrimaryColor);
+  static final TextStyle _darkScreenTaskDurationTextStyle = _lightScreenTaskDurationTextStyle;
 
 }
